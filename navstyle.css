@@ -1,0 +1,68 @@
+.navbt:hover{
+    --bg-size: 400% !important;
+    --color-one: hsl(323, 87%, 65%) !important;
+    --color-two: hsl(69, 91%, 66%) !important;
+    font-size: 18px !important;
+    font-weight: bolder !important;
+    background: linear-gradient(
+        90deg,
+        var(--color-one),
+        var(--color-two),
+        var(--color-one)
+        ) 0 0 / var(--bg-size) 100% !important;
+    animation: move-bg 4s infinite linear reverse !important;
+    color: transparent !important;
+    -webkit-background-clip: text !important;
+}
+.navbt-on{
+    --bg-size: 400% !important;
+    --color-one: hsl(323, 87%, 65%) !important;
+    --color-two: hsl(69, 91%, 66%) !important;
+    font-size: 16px !important;
+    font-weight: bolder !important;
+    background: linear-gradient(
+        90deg,
+        var(--color-one),
+        var(--color-two),
+        var(--color-one)
+        ) 0 0 / var(--bg-size) 100% !important;
+    animation: move-bg 4s infinite linear reverse !important;
+    color: transparent !important;
+    -webkit-background-clip: text !important;
+}
+.login-button{
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+
+}
+
+.navbt-login:hover{
+    --bg-size: 400% !important;
+    --color-one: hsl(323, 87%, 65%) !important;
+    --color-two: hsl(69, 91%, 66%) !important;
+    font-size: 16px !important;
+    font-weight: bolder !important;
+    background: linear-gradient(
+        90deg,
+        var(--color-one),
+        var(--color-two),
+        var(--color-one)
+        ) 0 0 / var(--bg-size) 100% !important;
+    animation: move-bg 4s infinite linear reverse !important;
+    color: white !important;
+}
+
+
+        
+        
+@keyframes move-bg {
+    to {
+        background-position: var(--bg-size) 0;
+    }
+}

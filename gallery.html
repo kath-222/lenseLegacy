@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="navstyle.css">
+       <title>Gallery</title>
+       
+        <style> 
+        
+         * {
+
+box-sizing: border-box;
+}
+
+
+body {
+background-color: #282539;
+}
+
+.warapper1 {
+width: 90%;
+margin: 0 auto;
+max-width: 80rem;
+}
+
+.cols1 {
+
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.col1 {
+width: calc(25% - 2rem);
+margin: 1rem;
+cursor: pointer;
+
+}
+
+.container1 {
+-webkit-transform-style: preserve-3d;
+/* transform-style: preserve-3d; */
+/* -webkit-perspective: 1000px; */
+perspective: 1000px;
+}
+
+.front,
+.back {
+background-size: cover;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+background-position: center;
+-webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+-o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+text-align: center;
+min-height: 280px;
+box-shadow: 0 0 10px solid blue;
+
+height: auto;
+border-radius: 10px;
+color: #fff;
+font-size: 1.5rem;
+}
+
+.front:after {
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1;
+width: 100%;
+height: 100%;
+content: '';
+display: block;
+opacity: .6;
+background-color: #000;
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+border-radius: 10px;
+}
+
+.container1:hover .front,
+.container1:hover .back {
+-webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+-o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+
+}
+
+.back {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+}
+
+.inner {
+-webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+transform: translateY(-50%) translateZ(60px) scale(0.94);
+top: 50%;
+position: absolute;
+left: 0;
+width: 100%;
+padding: 2rem;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+outline: 1px solid transparent;
+-webkit-perspective: inherit;
+perspective: inherit;
+z-index: 2;
+}
+
+.container1 .back {
+-webkit-transform: rotateY(180deg);
+transform: rotateY(180deg);
+-webkit-transform-style: preserve-3d;
+transform-style: preserve-3d;
+}
+
+.container1 .front {
+-webkit-transform: rotateY(0deg);
+transform: rotateY(0deg);
+-webkit-transform-style: preserve-3d;
+transform-style: preserve-3d;
+}
+
+.container1:hover .back {
+-webkit-transform: rotateY(0deg);
+transform: rotateY(0deg);
+-webkit-transform-style: preserve-3d;
+transform-style: preserve-3d;
+}
+
+.container1:hover .front {
+-webkit-transform: rotateY(-180deg);
+transform: rotateY(-180deg);
+-webkit-transform-style: preserve-3d;
+transform-style: preserve-3d;
+}
+
+.front .inner p {
+font-size: 2rem;
+margin-bottom: 2rem;
+position: relative;
+}
+
+.front .inner p:after {
+content: '';
+width: 4rem;
+height: 2px;
+position: absolute;
+background: #C6D4DF;
+display: block;
+left: 0;
+right: 0;
+margin: 0 auto;
+bottom: -.75rem;
+}
+
+.front .inner span {
+color: rgba(255, 255, 255, 0.7);
+font-family: 'Montserrat';
+font-weight: 300;
+}
+
+@media screen and (max-width: 64rem) {
+.col {
+    width: calc(33.333333% - 2rem);
+}
+}
+
+@media screen and (max-width: 48rem) {
+.col {
+    width: calc(50% - 2rem);
+}
+}
+
+@media screen and (max-width: 32rem) {
+.col {
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+}
+
+button.btn {
+padding: 8px 20px;
+width: 200px;
+height: 50px;
+color: #fff;
+font-weight: 700;
+border-radius: 0;
+text-transform: uppercase;
+margin-left: 45%;
+margin-top: 10%;
+overflow: hidden;
+position: relative;
+background: transparent;
+border-color: #00fffc;
+
+}
+
+button.btn::before {
+content: "";
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(120deg, transparent,
+        #00fffc, transparent);
+transform: translateX(-100%);
+transition: 0.6s;
+position: absolute;
+}
+
+button.btn:hover {
+background: transparent;
+box-shadow: 0 0 20px 5px #00fffc;
+}
+
+button.btn:hover::before {
+transform: translateX(100%);
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+                <!--Start logo-->
+<div class="container-fluid mb-1 bg-light">
+    <div class="row">
+      <div class="col-sm-8"><img src="logo.png" alt="logo" width="115px" height="100px"> </div>
+      <div class="col-sm-2 mt-1"><p style="font-weight: 300;">Call Us<br/><span style="text-decoration: underline;font-size: 16px;
+        font-weight: lighter ;">+968 98999999,+968 98911111</span></p></div>
+          <div class="col-sm-2 mt-1"><p style="font-weight: 300;">Email Us<br/><span style="text-decoration: underline;font-size: 16px;
+        font-weight: lighter ;">lenseslegacy@gmail.com</span></p></div>
+  
+    </div>
+  </div>
+  <!--End logo-->
+    <!--Start nav-->
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-sm bg-* navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item "><a class="nav-link navbt" href="index.html"><p class="">Home</p></a></li>
+            <li class="nav-item"><a class="nav-link navbt" href="bookNow.html">Book Now</a></li>
+            <li class="nav-item"><a class="nav-link navbt  active  navbt-on" href="gallery.html">Gallery</a> </li>
+            <li class="nav-item"><a class="nav-link navbt" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link navbt" href="contact.html">Contact Us</a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+            <a href="Login.html" class="login-button navbt-login " >Log In</a>
+        </ul>
+    </nav>
+</div>
+<!--End nav-->
+
+<!--start of header sec-->
+<div>
+<h1 style="color: #cedce7; text-align: center; font-weight: bolder;font-size: 90px;color: white;font-family: Verdana, Geneva, Tahoma, sans-serif;margin-bottom: 10%;">Gallery</h1>
+</div>
+<!--end of header sec-->
+
+<!--start of S1-->
+<div class="warapper1">
+
+<div class="cols1">
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(42.jpg)">
+                <div class="inner">
+                    <p>MAKAH</p>
+                    <span>Raed Al-shamri</span>
+                </div>
+            </div>
+            
+                <div class="back" style="background-image: url(42.jpg); background-size: cover;">
+                    
+                </div>
+            
+        </div>
+    </div>
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(39.jpg)">
+                <div class="inner">
+                    <p>SWISRA</p>
+                    <span>Salwa Al-araimi</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(39.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(31.jpg)">
+                <div class="inner">
+                    <p>OMAN-TRAD</p>
+                    <span>Nasser Al-Rawas</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(31.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(40.jpg)">
+                <div class="inner">
+                    <p>MALISIA</p>
+                    <span>somaa</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(40.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(37.jpg)">
+                <div class="inner">
+                    <p>LONDON</p>
+                    <span>Aram</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(37.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(38.jpg)">
+                <div class="inner">
+                    <p>FREE PHLISTINE</p>
+                    <span>Mohammed Nooh</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(38.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(41.jpg)">
+                <div class="inner">
+                    <p>FLOWERED VILAGE</p>
+                    <span>Samah AL-munji</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(41.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(36.jpg)">
+                <div class="inner">
+                    <p>RAINY WAY</p>
+                    <span>Marwa AL-Salmani</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(36.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(43.jpg)">
+                <div class="inner">
+                    <p>PEACE</p>
+                    <span>Zumred</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(43.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(35.jpg)">
+                <div class="inner">
+                    <p>OMANI FASH</p>
+                    <span>Elyas Saad</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(35.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+    <div class="col1" ontouchstart="this.classList.toggle('hover');">
+        <div class="container1">
+            <div class="front" style="background-image: url(27.jpg)">
+                <div class="inner">
+                    <p>FASHION</p>
+                    <span>Jasim Al-naman</span>
+                </div>
+            </div>
+            <div class="back" style="background-image: url(27.jpg); background-size: cover;">
+                    
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+</div>
+<!--end of S1-->
+
+<!--start of S2-->
+<div><a href=""><button type="button" class="btn">Load more</button></a></div>
+<br>
+<br>
+<!--start of S2-->
+
+<!--Start footer-->
+<footer class="bg-dark text-center text-lg-start text-light">
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Addresses</h5>
+  
+          <ul class="list-unstyled mb-0">
+            <li>
+              123 Muscate,Oman
+            </li>
+            <li>
+              Phone +968 00000000
+            </li>
+            <li>
+              Phone +968 99999999
+            </li>
+          </ul>
+        </div>
+  
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-0">Quick Links</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a href="index.html" class="text-light">Home</a>
+            </li>
+            <li>
+              <a href="bookNow.html" class="text-light">Book Now</a>
+            </li>
+            <li>
+              <a href="gallery.html" class="text-light">Gallery</a>
+            </li>
+            <li>
+              <a href="about.html" class="text-light">About Us</a>
+            </li><li>
+              <a href="contact.html" class="text-light">Contact Us</a>
+            </li>
+
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Contact Us</h5>
+  
+          <ul class="list-unstyled mb-0">
+            <li>
+              LensesLegacy@gmail.com
+            </li>
+            <li>
+              insta: @LensesLegacy
+            </li>
+            <li>
+              X: @LensesLegacy
+            </li>
+            <li>
+              FacB: @LensesLegacy
+            </li>
+          </ul>
+        </div>
+      
+      </div>
+    </div>
+
+  </footer>
+<!--Start footer-->
+
+    </body>
+</html>
