@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="navstyle.css">
+    <title>Hangman Game</title>
+    <style>
+
+body {
+   
+  
+    background: #282539;
+}
+
+h1 {
+    color: #938f8f;
+}
+
+#word-show {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+#incorrect-letters {
+    color:#ea2424;
+    margin-bottom: 10px;
+}
+
+input {
+    margin-bottom: 10px;
+    padding:4px;
+    
+    border:none;
+    border-radius: 2px;
+}
+
+.guess-btn{
+    background-color: white;
+    color: rgb(99, 97, 97);
+    font-size: 12px;
+    font-weight: bolder;
+    padding: 8px 15px 7px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+    border: none;
+
+}
+
+.guess-btn:hover{
+    --bg-size: 400% !important;
+    --color-one: hsl(323, 87%, 65%) !important;
+    --color-two: hsl(69, 91%, 66%) !important;
+    font-size: 12px !important;
+    font-weight: bolder !important;
+    background: linear-gradient(
+        90deg,
+        var(--color-one),
+        var(--color-two),
+        var(--color-one)
+        ) 0 0 / var(--bg-size) 100% !important;
+    animation: move-bg 4s infinite linear reverse !important;
+    color: white !important;
+}
+
+
+        
+        
+@keyframes move-bg {
+    to {
+        background-position: var(--bg-size) 0;
+    }
+}
+.bt{
+            --bg-size: 400%;
+            --color-one: hsl(323, 87%, 65%);
+            --color-two: hsl(69, 91%, 66%);
+            font-size: 40px;
+            font-weight: bolder ;
+            background: linear-gradient(
+                90deg,
+                var(--color-one),
+                var(--color-two),
+                var(--color-one)
+                ) 0 0 / var(--bg-size) 100%;
+            animation: move-bg 4s infinite linear reverse;
+            color: transparent;
+            -webkit-background-clip: text;
+        }
+        @keyframes move-bg {
+            to {
+                background-position: var(--bg-size) 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid mb-1 bg-light">
+        <div class="row">
+          <div class="col-sm-8"><img src="logo.png" alt="logo"  width="115px" height="100px"> </div>
+          <div class="col-sm-2 mt-1"><p style="font-weight: 300;">Call Us<br/><span style="text-decoration: underline;font-size: 16px;
+            font-weight: lighter ;">+968 98999999,+968 98911111</span></p></div>
+              <div class="col-sm-2 mt-1"><p style="font-weight: 300;">Email Us<br/><span style="text-decoration: underline;font-size: 16px;
+            font-weight: lighter ;">lenseslegacy@gmail.com</span></p></div>
+      
+        </div>
+      </div>
+      <!--End logo-->
+    
+    <!--Start nav-->
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm bg-* navbar-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item "><a class="nav-link navbt" href="index.html"><p class="">Home</p></a></li>
+                <li class="nav-item"><a class="nav-link navbt    navbt" href="bookNow.html">Book Now</a></li>
+                <li class="nav-item"><a class="nav-link navbt " href="gallery.html">Gallery</a> </li>
+                <li class="nav-item"><a class="nav-link navbt active navbt-on" href="fun.html">Fun</a></li>
+                <li class="nav-item"><a class="nav-link navbt" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link navbt" href="contact.html">Contact Us</a></li>
+
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                <a href="Login.html" class="login-button navbt-login " >Log In</a>
+            </ul>
+        </nav>
+    </div>
+    <!--End nav-->
+    <div style="text-align: center; margin-top: 5%;">
+    <h1 class="bt" style="margin-bottom: 5%;">Hangman Game</h1>
+   
+   
+    <input type="text" id="guessedInput" placeholder="Enter a letter">
+    <button onclick="handleGuess()" class="guess-btn">Guess</button>  
+    <div id="word-show" style="margin-bottom: 3%;"></div>
+    <div id="incorrect-letters"></div>
+    <script src="funScript.js"></script></div>
+</body>
+</html>
