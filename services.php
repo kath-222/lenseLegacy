@@ -121,6 +121,8 @@
 
 <body>
 <?php
+
+// Define the Service class
 class Service {
     public $serviceName;
     public $serviceType;
@@ -133,30 +135,44 @@ class Service {
     }
 }
 
+// Array to store services
 $services = [
     new Service("view", "noninteractive", "gallery"),
     new Service("book", "interaction", "book")
 ];
 
-function displayServiceTable($services) {
-    echo "<table>";
-    echo "<thead>";
-    echo "<tr><td>Name</td><td>Type</td><td>Page</td></tr>";
-    echo "</thead>";
+// Process form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data
+    $serviceName = $_POST["input11"];
+    $serviceType = $_POST["input22"];
+    $servicePage = $_POST["input33"];
+
+    // Create a new Service object
+    $newService = new Service($serviceName, $serviceType, $servicePage);
+
+    // Add the new service to the array
+    $services[] = $newService;
+}
+
+// Function to display services table
+function displayServicesTable($services) {
+    echo "<table id=\"table1\" class=\"table table-bordered bg-light\">";
+    echo "<thead><tr><th>Name</th><th>Type</th><th>Page</th></tr></thead>";
     echo "<tbody>";
 
     foreach ($services as $service) {
         echo "<tr>";
-        echo "<td>" . $service->serviceName . "</td>";
-        echo "<td>" . $service->serviceType . "</td>";
-        echo "<td>" . $service->servicePage . "</td>";
+        echo "<td>" . htmlspecialchars($service->serviceName) . "</td>";
+        echo "<td>" . htmlspecialchars($service->serviceType) . "</td>";
+        echo "<td>" . htmlspecialchars($service->servicePage) . "</td>";
         echo "</tr>";
     }
 
-    echo "</tbody>";
-    echo "</table>";
+    echo "</tbody></table>";
 }
 ?>
+
             <div class="container-fluid login_form_container">
                 
               <div class="login_form " align="center">
@@ -164,12 +180,14 @@ function displayServiceTable($services) {
                 </br>
                 </br>
                 
-                <?php displayServiceTable($services);?>
+                <?php 
+                // Call the function to display the updated services table
+                displayServicesTable($services);
+                ?>
 
                 </div>
                 
 
             </div>
     </body>
-</html>        
-
+</html>      
